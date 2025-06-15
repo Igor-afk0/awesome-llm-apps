@@ -3,10 +3,8 @@ import tempfile
 import csv
 import streamlit as st
 import pandas as pd
-from agno.models.openai import OpenAIChat
+from phi.model.openai import OpenAIChat
 from phi.agent.duckdb import DuckDbAgent
-from agno.tools.pandas import PandasTools
-import re
 
 # Function to preprocess and save the uploaded file
 def preprocess_and_save(file):
@@ -89,7 +87,6 @@ if uploaded_file is not None and "openai_key" in st.session_state:
         duckdb_agent = DuckDbAgent(
             model=OpenAIChat(model="gpt-4", api_key=st.session_state.openai_key),
             semantic_model=json.dumps(semantic_model),
-            tools=[PandasTools()],
             markdown=True,
             add_history_to_messages=False,  # Disable chat history
             followups=False,  # Disable follow-up queries
