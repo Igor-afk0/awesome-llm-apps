@@ -1,9 +1,8 @@
 import asyncio
 import streamlit as st
-from browser_use import Agent, SystemPrompt
+from browser_use import Agent
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
-from langchain_core.messages import HumanMessage
 import re
 
 async def generate_meme(query: str, model_choice: str, api_key: str) -> None:
